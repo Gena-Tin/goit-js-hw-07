@@ -50,6 +50,8 @@ function createGalleryMarkup() {
 function handleOnImageClick(e) {
   e.preventDefault();
 
+  if (e.target.classList.contains("gallery")) return;
+
   const source = e.target.dataset.source;
 
   //import * as basicLightbox from 'basiclightbox'
@@ -57,8 +59,8 @@ function handleOnImageClick(e) {
         <img src="${source}" width="800" height="600">
     `);
   instance.show();
-  document.addEventListener("keydown", closeOnEsc);
   // --------- end import
+  document.addEventListener("keydown", closeOnEsc);
 
   function closeOnEsc(e) {
     if (e.code === "Escape") {
